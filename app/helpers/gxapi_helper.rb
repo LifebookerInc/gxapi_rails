@@ -17,7 +17,7 @@ module GxapiHelper
     # default
     ivar_name = args.first || :variant
 
-    unless variant = self.get_variant(ivar_name)
+    unless variant = self.get_this_variant(ivar_name)
       return ""
     end
 
@@ -55,7 +55,7 @@ module GxapiHelper
   # variant
   #
   # @return [Gxapi::Ostruct, false] Variant if it exists, false otherwise
-  def get_variant(ivar_name)
+  def get_this_variant(ivar_name)
     # make sure we have our variant
     unless variant = instance_variable_get("@#{ivar_name}")
       Gxapi.logger.debug { "No variant found - #{ivar_name}" }
